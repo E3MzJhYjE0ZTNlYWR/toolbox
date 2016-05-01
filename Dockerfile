@@ -13,7 +13,7 @@ ENTRYPOINT ["/bin/bash", "-c", "cd /home && \
 	unzip package.zip && \
 	mv /home/package/_s3cfg /root/.s3cfg && \
 	mv /home/package/lftp.conf /etc/lftp.conf && \
-	cd /home", "&&", 
+	cd /home", ";", 
 	"/bin/bash"]
 	
 	
