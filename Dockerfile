@@ -8,12 +8,12 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927 && \
 	apt-get install less lftp ssh s3cmd wget zip unzip vim openssl mongodb-org-shell mongodb-org-tools mysql-client -y && \
 	apt-get clean
 
-ENTRYPOINT ["cd", "/home",
-	"openssl", "enc", "-d", "-aes-256-cbc", "-in", "package.zip.enc", "-out", "package.zip", "-pass", "pass:$UNLOCK_KEY",
-	"unzip", "package.zip",
-	"mv", "/home/package/_s3cfg", "/root/.s3cfg",
-	"mv", "/home/package/lftp.conf", "/etc/lftp.conf",
-	"cd", "/home",
+ENTRYPOINT ["cd", "/home", "&&",
+	"openssl", "enc", "-d", "-aes-256-cbc", "-in", "package.zip.enc", "-out", "package.zip", "-pass", "pass:$UNLOCK_KEY", "&&",
+	"unzip", "package.zip", "&&",
+	"mv", "/home/package/_s3cfg", "/root/.s3cfg", "&&",
+	"mv", "/home/package/lftp.conf", "/etc/lftp.conf", "&&",
+	"cd", "/home", "&&",
 	"/bin/bash"]
 	
 	
